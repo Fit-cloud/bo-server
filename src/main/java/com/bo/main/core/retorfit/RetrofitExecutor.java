@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by tjdudals20@gmail.com on 2020-02-14
  */
 @Slf4j
-public class RetrofitExecutor<T> {
+public abstract class RetrofitExecutor<T> {
     public T execute(Call<T> call) {
         try {
             Response<T> response = call.execute();

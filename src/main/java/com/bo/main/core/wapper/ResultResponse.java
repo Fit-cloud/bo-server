@@ -37,12 +37,12 @@ public class ResultResponse<T> {
     private T result;
 
     public ResultResponse(T result) {
-        this.status = HttpStatus.OK.value();
+        if (result instanceof HttpStatus) {
+            this.status = ((HttpStatus) result).value();
+        } else {
+            this.status = HttpStatus.OK.value();
+        }
         this.message = "success";
         this.result = result;
-    }
-
-    public ResultResponse(HttpStatus httpStatus) {
-        this.status = httpStatus.value();
     }
 }

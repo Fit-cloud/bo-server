@@ -100,13 +100,12 @@ public class RetrofitFactory<S> {
 
             final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
-            OkHttpClient.Builder builder = new OkHttpClient.Builder()
+            return new OkHttpClient.Builder()
                     .sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0])
                     .hostnameVerifier((hostname, session) -> true)
                     .addInterceptor(interceptor)
                     .addInterceptor(this.createLoggingInterceptor());
 
-            return builder;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
