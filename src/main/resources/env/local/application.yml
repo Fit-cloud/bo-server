@@ -1,0 +1,45 @@
+###############################################################################
+## dev
+
+server:
+  port: 8080
+
+spring:
+  profiles:
+    include:
+      - console-logging
+      - file-logging
+  task:
+    execution:
+      pool:
+        core-size: 50
+        max-size: 200
+        queue-capacity: 1000
+      thread-name-prefix: task-
+
+    scheduling:
+      pool:
+        size: 5
+      thread-name-prefix: scheduling-
+
+# actuator
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  info:
+#    git:
+#      mode: full
+
+###############################################################################
+## openAPI 3.0 - swagger
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+
+###############################################################################
+
