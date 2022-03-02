@@ -12,20 +12,33 @@ spring:
     include:
       - console-logging
       - file-logging
-  task:
-    execution:
-      pool:
-        core-size: 50
-        max-size: 200
-        queue-capacity: 1000
-      thread-name-prefix: task-
+    active: local
+  #  task:
+#    execution:
+#      pool:
+#        core-size: 50
+#        max-size: 200
+#        queue-capacity: 1000
+#      thread-name-prefix: task-
+#
+#    scheduling:
+#      pool:
+#        size: 5
+#      thread-name-prefix: scheduling-
 
-    scheduling:
-      pool:
-        size: 5
-      thread-name-prefix: scheduling-
-
-
+  jpa:
+    database: mysql
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 20000
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+    show-sql: on
 
 # actuator
 #management:

@@ -6,8 +6,8 @@ db:
       password: password
       driver-class-name: com.mysql.cj.jdbc.Driver
       connection-test-query: SELECT 1
-      minimum-idle: 1
-      maximum-pool-size: 10
+      minimum-idle: 10
+      maximum-pool-size: 100
       auto-commit: true
       connection-timeout: 5000
       idle-timeout: 600000
