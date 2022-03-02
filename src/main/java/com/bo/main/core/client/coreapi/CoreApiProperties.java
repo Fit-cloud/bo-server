@@ -11,18 +11,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class CoreApiProperties {
 
-    @Value("${coreapi.base.domain}")
+    @Value("${api.base.domain}")
     private String baseDomain;
 
-    @Value("${coreapi.base.clientId}")
+//    @Value("${coreapi.base.clientId}")
     private String clientId;
 
-    @Value("${coreapi.base.secureCode}")
+//    @Value("${coreapi.base.secureCode}")
     private String secureCode;
 
-    @Value("${cabllback.starting.get}")
+//    @Value("${cabllback.starting.get}")
     private String callBackUrlStaringGet;
 
-    @Value("${cabllback.starting.set}")
+//    @Value("${cabllback.starting.set}")/**/
     private String callBackUrlStaringSet;
 }

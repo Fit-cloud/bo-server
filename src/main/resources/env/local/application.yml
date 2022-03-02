@@ -3,6 +3,9 @@
 
 server:
   port: 8080
+  error:
+    whitelabel:
+      enabled: true
 
 spring:
   profiles:
@@ -21,6 +24,8 @@ spring:
       pool:
         size: 5
       thread-name-prefix: scheduling-
+
+
 
 # actuator
 #management:
@@ -43,3 +48,6 @@ springdoc:
 
 ###############################################################################
 
+api:
+  base:
+    domain: http://localhost:8081

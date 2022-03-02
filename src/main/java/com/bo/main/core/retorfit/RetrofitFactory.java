@@ -119,7 +119,6 @@ public class RetrofitFactory<S> {
                 requestBuilder.addHeader(key, headers.get(key));
             }
             return chain.proceed(requestBuilder.build());
-
         };
     }
 

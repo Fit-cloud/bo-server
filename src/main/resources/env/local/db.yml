@@ -1,9 +1,9 @@
 db:
   my:
     hikari:
-      jdbc-url: jdbc:mysql://localhost:3306/db?autoReconnect=true&useUnicode=true&characterEncoding=utf8
-      username: admin
-      password: admin
+      jdbc-url: jdbc:mysql://localhost:3306/local_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+      username: local
+      password: password
       driver-class-name: com.mysql.cj.jdbc.Driver
       connection-test-query: SELECT 1
       minimum-idle: 1

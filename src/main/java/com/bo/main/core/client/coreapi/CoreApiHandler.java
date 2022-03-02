@@ -36,7 +36,7 @@ public class CoreApiHandler {
         return false;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public CoreApiHandler auth() {
         Map<String, String> baseHeaders = new HashMap<>();
         baseHeaders.put("Content-Type", "application/json;charset=utf-8");
