@@ -28,7 +28,7 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping(value = "/error", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResultResponse error(HttpServletRequest request) {
+    public ResultResponse<?> error(HttpServletRequest request) {
         final Throwable error = getError(request);
 
         int statusCode = getErrorStatusCode(request);

@@ -1,11 +1,17 @@
 package com.bo.main.api.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -14,7 +20,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "ADMIN")
-public class AdminEntity implements Serializable {
+public class AdminEntity extends BaseTimeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,30 +37,6 @@ public class AdminEntity implements Serializable {
      */
     @Column(name = "ADM_ID")
     private String admId;
-
-    /**
-     * 등록일시
-     */
-    @Column(name = "CRT_DTM")
-    private Date crtDtm;
-
-    /**
-     * 등록자
-     */
-    @Column(name = "CRTR")
-    private String crtr;
-
-    /**
-     * 수정일시
-     */
-    @Column(name = "UPD_DTM")
-    private Date updDtm;
-
-    /**
-     * 수정자
-     */
-    @Column(name = "UPDTR")
-    private String updtr;
 
     /**
      * 관리자 비번

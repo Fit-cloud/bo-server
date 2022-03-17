@@ -1,9 +1,13 @@
 package com.bo.main.api.entities.vo;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -15,7 +19,6 @@ public class AdminVo implements Serializable {
     /**
      * 관리자 순번
      */
-    @NotNull(message = "admSeq can not null")
     private Long admSeq;
 
 
@@ -23,31 +26,6 @@ public class AdminVo implements Serializable {
      * 관리자 아이디
      */
     private String admId;
-
-
-    /**
-     * 등록일시
-     */
-    private Date crtDtm;
-
-
-    /**
-     * 등록자
-     */
-    private String crtr;
-
-
-    /**
-     * 수정일시
-     */
-    private Date updDtm;
-
-
-    /**
-     * 수정자
-     */
-    private String updtr;
-
 
     /**
      * 관리자 비번
@@ -77,5 +55,28 @@ public class AdminVo implements Serializable {
      * 사용여부
      */
     private String useYn;
+
+    /**
+     * 등록일시
+     */
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime crtDtm;
+
+    /**
+     * 등록자
+     */
+    private String crtr;
+
+    /**
+     * 수정일시
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime updDtm;
+
+    /**
+     * 수정자
+     */
+    private String updtr;
 
 }

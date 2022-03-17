@@ -12,11 +12,14 @@ logging:
   charset:
     file: UTF-8
   level:
-    root: INFO
+    root: DEBUG
     test: INFO
     org:
       hibernate:
-        type: TRACE
+        type:
+        descriptor:
+          sql:
+            BasicBinder: TRACE
 
 spring:
   profiles:
@@ -73,10 +76,12 @@ spring:
       compatible-boot-versions: 2.5.8
   gson:
     serialize-nulls: false
-    exclude-fields-without-expose-annotation: true
+    date-format: yyyy-MM-dd HH:mm:ss
   mvc:
     converters:
-      preferred-json-mapper: gson
+      preferred-json-mapper: jackson
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
 
 
 # actuator

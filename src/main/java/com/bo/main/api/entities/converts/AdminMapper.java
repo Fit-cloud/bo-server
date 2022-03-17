@@ -1,5 +1,7 @@
 package com.bo.main.api.entities.converts;
 
+import com.bo.main.api.controller.vo.req.ReqAdminVo;
+import com.bo.main.api.controller.vo.res.ResAdminVo;
 import com.bo.main.api.entities.AdminEntity;
 import com.bo.main.api.entities.vo.AdminVo;
 import org.mapstruct.*;
@@ -11,4 +13,11 @@ public interface AdminMapper extends GenericMapper<AdminVo, AdminEntity> {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateFromVo(AdminVo dto, @MappingTarget AdminEntity entity);
+
+
+    @Mapping(target = "useYn", ignore = true)
+    AdminVo toVo(ReqAdminVo reqAdminVo);
+
+    ResAdminVo toVo(AdminVo adminVo);
+
 }

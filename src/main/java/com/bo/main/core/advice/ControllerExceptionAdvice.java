@@ -23,30 +23,29 @@ import java.util.stream.Collectors;
 public class ControllerExceptionAdvice {
 
     @ExceptionHandler(MyException.class)
-    public ResponseEntity<ResultResponse<HttpStatus>> handleException(MyException e) {
-        ResultResponse<HttpStatus> resultResponse = new ResultResponse<>(e.getHttpStatus());
+    public ResponseEntity<ResultResponse> handleException(MyException e) {
+        ResultResponse resultResponse = new ResultResponse(e.getHttpStatus());
         resultResponse.setMessage(e.getMessage());
         resultResponse.setCode(e.getCode());
-
         log.debug("#### {}", resultResponse);
-
         return new ResponseEntity<>(resultResponse, e.getHttpStatus());
     }
 
     @ExceptionHandler({ ValidationException.class, TypeMismatchException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResultResponse<HttpStatus> handleValidateException(Exception e) {
-        ResultResponse<HttpStatus> resultResponse = new ResultResponse<>(HttpStatus.BAD_REQUEST);
+    public ResultResponse handleValidateException(Exception e) {
+        ResultResponse resultResponse = new ResultResponse(HttpStatus.BAD_REQUEST);
         resultResponse.setMessage(e.getMessage());
         resultResponse.setCode(40099);
         log.warn("#### {}", (Object) e.getStackTrace());
+
         return resultResponse;
     }
 
     @ExceptionHandler({ MethodArgumentNotValidException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResultResponse<HttpStatus> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        ResultResponse<HttpStatus> resultResponse = new ResultResponse<>(HttpStatus.BAD_REQUEST);
+    public ResultResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        ResultResponse resultResponse = new ResultResponse(HttpStatus.BAD_REQUEST);
         resultResponse.setCode(40099);
 
         List<String> errorMessages = e.getBindingResult().getFieldErrors().stream()
@@ -61,8 +60,8 @@ public class ControllerExceptionAdvice {
 
     @ExceptionHandler({ AccessDeniedException.class, UnauthorizedException.class })
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ResultResponse<HttpStatus> handleException(AccessDeniedException e) {
-        ResultResponse<HttpStatus> resultResponse = new ResultResponse<>(HttpStatus.UNAUTHORIZED);
+    public ResultResponse handleException(AccessDeniedException e) {
+        ResultResponse resultResponse = new ResultResponse(HttpStatus.UNAUTHORIZED);
         resultResponse.setCode(40100);
         resultResponse.setMessage(e.getMessage());
         return resultResponse;
@@ -70,8 +69,8 @@ public class ControllerExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResultResponse<HttpStatus> handleException(Exception e) {
-        ResultResponse<HttpStatus> resultResponse = new ResultResponse<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResultResponse handleException(Exception e) {
+        ResultResponse resultResponse = new ResultResponse(HttpStatus.INTERNAL_SERVER_ERROR);
         resultResponse.setMessage(e.getMessage());
         log.warn("#### {}", e.toString());
         for (StackTraceElement stack : e.getStackTrace()) {
