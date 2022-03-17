@@ -1,11 +1,15 @@
 package com.bo.main.api.controller;
 
+import com.bo.main.api.controller.vo.req.ReqAdminSearchVo;
 import com.bo.main.api.controller.vo.req.ReqAdminVo;
 import com.bo.main.api.entities.converts.AdminMapper;
 import com.bo.main.api.entities.vo.AdminVo;
 import com.bo.main.api.service.AdminService;
 import com.bo.main.core.wapper.ResultResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/bo/admin")
@@ -35,9 +40,13 @@ public class BoAdminController {
     @GetMapping("/management/list")
     public ResultResponse<?> searchAdmins(
             HttpServletRequest req, HttpServletResponse resp,
-            @Valid @RequestBody ReqAdminVo reqAdminVo
+            @Valid @RequestParam Map<String, String> parameterMap,
+            @PageableDefault(page = 0, size = 10) Pageable pageable
     ) throws Exception {
-        return new ResultResponse<>(adminMapper.toVo(adminMapper.toVo(reqAdminVo)));
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ReqAdminSearchVo searchVo = objectMapper.convertValue(parameterMap, ReqAdminSearchVo.class);
+        return new ResultResponse<>(adminService.search(searchVo, pageable));
     }
 
     @PostMapping("/management")
