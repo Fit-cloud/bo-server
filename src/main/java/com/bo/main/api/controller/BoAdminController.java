@@ -54,7 +54,10 @@ public class BoAdminController {
             HttpServletRequest req, HttpServletResponse resp,
             @Valid @RequestBody ReqAdminVo reqAdminVo
     ) throws Exception {
+
         AdminVo adminVo = adminMapper.toVo(reqAdminVo);
+        adminService.add(adminVo);
+
         return new ResultResponse<>(HttpStatus.CREATED);
     }
 
@@ -63,7 +66,10 @@ public class BoAdminController {
             HttpServletRequest req, HttpServletResponse resp,
             @Valid @RequestBody ReqAdminVo reqAdminVo
     ) throws Exception {
+
         AdminVo adminVo = adminMapper.toVo(reqAdminVo);
+        adminService.update(adminVo);
+
         return new ResultResponse<>(HttpStatus.CREATED);
 
     }

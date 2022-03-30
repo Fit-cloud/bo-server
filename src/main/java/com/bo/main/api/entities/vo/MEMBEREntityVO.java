@@ -35,7 +35,7 @@ public class MEMBEREntityVO implements Serializable {
     /**
      * 등록자
      */
-    private String CRTR;
+    private String crtr;
 
 
     /**
@@ -47,7 +47,7 @@ public class MEMBEREntityVO implements Serializable {
     /**
      * 수정자
      */
-    private String UPDTR;
+    private String updtr;
 
 
     /**
@@ -67,15 +67,15 @@ public class MEMBEREntityVO implements Serializable {
     /**
      * 전화번화
      */
-    @NotNull(message = "MOBL can not null")
-    private String MOBL;
+    @NotNull(message = "mobl can not null")
+    private String mobl;
 
 
     /**
      * 이메일
      */
-    @NotNull(message = "MAIL can not null")
-    private String MAIL;
+    @NotNull(message = "mail can not null")
+    private String mail;
 
 
     /**

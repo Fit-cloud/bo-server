@@ -65,7 +65,7 @@ public class QuestionListEntityVO implements Serializable {
     /**
      * 등록자
      */
-    private String CRTR;
+    private String crtr;
 
 
     /**
@@ -77,6 +77,6 @@ public class QuestionListEntityVO implements Serializable {
     /**
      * 수정자
      */
-    private String UPDTR;
+    private String updtr;
 
 }

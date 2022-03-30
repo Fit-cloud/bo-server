@@ -64,7 +64,7 @@ public class CATEGORYEntityVO implements Serializable {
     /**
      * 등록자
      */
-    private String CRTR;
+    private String crtr;
 
 
     /**
@@ -76,6 +76,6 @@ public class CATEGORYEntityVO implements Serializable {
     /**
      * 수정자
      */
-    private String UPDTR;
+    private String updtr;
 
 }

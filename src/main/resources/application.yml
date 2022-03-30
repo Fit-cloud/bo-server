@@ -21,12 +21,9 @@ logging:
           sql:
             BasicBinder: TRACE
 
+
 spring:
-  profiles:
-    include:
-      - console-logging
-      - file-logging
-    active: local
+
   #  task:
 #    execution:
 #      pool:

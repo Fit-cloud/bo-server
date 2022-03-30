@@ -1,28 +1,28 @@
 package com.bo.main.api.entities.vo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
 @Data
-public class LecturerCareerEntityVO implements Serializable {
+public class LecturerCareerVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
     /**
      * 경력순번
      */
-    @NotNull(message = "carrSeq can not null")
     private Long carrSeq;
 
 
     /**
      * 강사순번
      */
-    @NotNull(message = "lctrSeq can not null")
     private Long lctrSeq;
 
 
@@ -33,32 +33,30 @@ public class LecturerCareerEntityVO implements Serializable {
 
 
     /**
-     * 경력번호
+     * 경력정렬순번
      */
     private Integer carrNo;
-
 
     /**
      * 등록일시
      */
-    private Date crtDtm;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime crtDtm;
 
     /**
      * 등록자
      */
-    private String CRTR;
-
+    private String crtr;
 
     /**
      * 수정일시
      */
-    private Date updDtm;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime updDtm;
 
     /**
      * 수정자
      */
-    private String UPDTR;
-
+    private String updtr;
 }

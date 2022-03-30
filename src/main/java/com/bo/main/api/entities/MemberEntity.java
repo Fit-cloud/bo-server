@@ -36,8 +36,8 @@ public class MemberEntity implements Serializable {
     /**
      * 등록자
      */
-    @Column(name = "CRTR")
-    private String CRTR;
+    @Column(name = "crtr")
+    private String crtr;
 
     /**
      * 수정일시
@@ -48,8 +48,8 @@ public class MemberEntity implements Serializable {
     /**
      * 수정자
      */
-    @Column(name = "UPDTR")
-    private String UPDTR;
+    @Column(name = "updtr")
+    private String updtr;
 
     /**
      * 회원 명
@@ -66,14 +66,14 @@ public class MemberEntity implements Serializable {
     /**
      * 전화번화
      */
-    @Column(name = "MOBL", nullable = false)
-    private String MOBL;
+    @Column(name = "mobl", nullable = false)
+    private String mobl;
 
     /**
      * 이메일
      */
-    @Column(name = "MAIL", nullable = false)
-    private String MAIL;
+    @Column(name = "mail", nullable = false)
+    private String mail;
 
     /**
      * 성별

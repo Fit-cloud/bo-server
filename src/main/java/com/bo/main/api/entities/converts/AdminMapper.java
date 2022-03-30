@@ -14,8 +14,6 @@ public interface AdminMapper extends GenericMapper<AdminVo, AdminEntity> {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateFromVo(AdminVo dto, @MappingTarget AdminEntity entity);
 
-
-    @Mapping(target = "useYn", ignore = true)
     AdminVo toVo(ReqAdminVo reqAdminVo);
 
     ResAdminVo toVo(AdminVo adminVo);

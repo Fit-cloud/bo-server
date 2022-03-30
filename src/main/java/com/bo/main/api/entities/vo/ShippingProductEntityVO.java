@@ -64,7 +64,7 @@ public class ShippingProductEntityVO implements Serializable {
     /**
      * 등록자
      */
-    private String CRTR;
+    private String crtr;
 
 
     /**
@@ -76,6 +76,6 @@ public class ShippingProductEntityVO implements Serializable {
     /**
      * 수정자
      */
-    private String UPDTR;
+    private String updtr;
 
 }

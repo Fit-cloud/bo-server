@@ -49,4 +49,6 @@ public class ReqAdminVo extends CommonVo {
     @Email
     private String admMail;
 
+
+    private String useYn = "Y";
 }

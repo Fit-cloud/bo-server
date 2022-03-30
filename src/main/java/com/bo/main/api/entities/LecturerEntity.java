@@ -1,12 +1,19 @@
 package com.bo.main.api.entities;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "LECTURER")
 public class LecturerEntity implements Serializable {
@@ -25,7 +32,7 @@ public class LecturerEntity implements Serializable {
      * 강사코드
      */
     @Column(name = "LCTR_CD")
-    private Integer lctrCd;
+    private String lctrCd;
 
     /**
      * 등록일시
@@ -36,8 +43,8 @@ public class LecturerEntity implements Serializable {
     /**
      * 등록자
      */
-    @Column(name = "CRTR")
-    private String CRTR;
+    @Column(name = "crtr")
+    private String crtr;
 
     /**
      * 수정일시
@@ -48,8 +55,8 @@ public class LecturerEntity implements Serializable {
     /**
      * 수정자
      */
-    @Column(name = "UPDTR")
-    private String UPDTR;
+    @Column(name = "updtr")
+    private String updtr;
 
     /**
      * 강사명
@@ -60,14 +67,14 @@ public class LecturerEntity implements Serializable {
     /**
      * 전화전호
      */
-    @Column(name = "MOBL")
-    private String MOBL;
+    @Column(name = "mobl")
+    private String mobl;
 
     /**
      * 이메일
      */
-    @Column(name = "MAIL")
-    private String MAIL;
+    @Column(name = "mail")
+    private String mail;
 
     /**
      * 성별
@@ -81,4 +88,24 @@ public class LecturerEntity implements Serializable {
     @Column(name = "LCTR_IMG")
     private String lctrImg;
 
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LCTR_SEQ", insertable = false, updatable = false)
+    @JsonBackReference
+    @ToString.Exclude
+    private List<LecturerCareerEntity> lecturerCareerEntityList;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        LecturerEntity that = (LecturerEntity) o;
+        return lctrSeq != null && Objects.equals(lctrSeq, that.lctrSeq);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

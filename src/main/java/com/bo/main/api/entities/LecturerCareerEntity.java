@@ -1,12 +1,19 @@
 package com.bo.main.api.entities;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "LECTURER_CAREER")
 public class LecturerCareerEntity implements Serializable {
@@ -34,7 +41,7 @@ public class LecturerCareerEntity implements Serializable {
     private String carrNm;
 
     /**
-     * 경력번호
+     * 경력정렬순번
      */
     @Column(name = "CARR_NO")
     private Integer carrNo;
@@ -48,8 +55,8 @@ public class LecturerCareerEntity implements Serializable {
     /**
      * 등록자
      */
-    @Column(name = "CRTR")
-    private String CRTR;
+    @Column(name = "crtr")
+    private String crtr;
 
     /**
      * 수정일시
@@ -60,7 +67,26 @@ public class LecturerCareerEntity implements Serializable {
     /**
      * 수정자
      */
-    @Column(name = "UPDTR")
-    private String UPDTR;
+    @Column(name = "updtr")
+    private String updtr;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LCTR_SEQ", insertable = false, updatable = false)
+    @JsonBackReference
+    @ToString.Exclude
+    private LecturerEntity lecturerEntity;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        LecturerCareerEntity that = (LecturerCareerEntity) o;
+        return carrSeq != null && Objects.equals(carrSeq, that.carrSeq);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

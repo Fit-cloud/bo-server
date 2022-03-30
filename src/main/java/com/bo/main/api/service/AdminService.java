@@ -53,12 +53,13 @@ public class AdminService {
         return adminMapper.toVo(adminRepository.save(loadAdmin));
     }
 
-    public AdminVo addAdmin(AdminVo adminVo) throws Exception {
+    public AdminVo add(AdminVo adminVo) throws Exception {
+
 
         Optional<AdminEntity> opt = findAdminById(adminVo.getAdmId());
 
         if (opt.isPresent()) {
-            throw new Exception(StringUtils.message("이미 등록된 Admin Id({}) 입니다.", adminVo.getAdmId()));
+            throw new Exception(StringUtils.message("이미등록된 Admin({}) 입니다.", adminVo.getAdmId()));
         }
 
         AdminEntity newAdmin = new AdminEntity();
