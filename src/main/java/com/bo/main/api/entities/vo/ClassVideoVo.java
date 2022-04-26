@@ -8,9 +8,11 @@ import java.util.Date;
 
 
 @Data
-public class ClassVideoEntityVO implements Serializable {
+public class ClassVideoVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotNull(message = "vdSeq can not null")
+    private Long vdSeq;
 
     /**
      * 강의 순번

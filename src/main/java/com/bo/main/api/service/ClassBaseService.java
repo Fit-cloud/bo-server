@@ -30,6 +30,9 @@ public class ClassBaseService {
 
     private final ClassBaseMapper classBaseMapper;
 
+
+    private final ClassVideoService classVideoService;
+
     public Optional<ClassBaseEntity> findClassBaseById(long clssSeq) {
         return classBaseRepository.findById(clssSeq);
     }
@@ -54,7 +57,7 @@ public class ClassBaseService {
         return classBaseMapper.toVo(classBaseRepository.save(loadClassBase));
     }
 //
-    public ClassBaseVo add(ClassBaseVo classBaseVo) throws Exception {
+    public ClassBaseVo add(ClassBaseVo newClassBaseVo) throws Exception {
 
 //        Optional<ClassBaseEntity> opt = findClassBaseById(classBaseVo.getClssSeq());
 
@@ -63,9 +66,13 @@ public class ClassBaseService {
 //        }
 
         ClassBaseEntity loadClassBase = new ClassBaseEntity();
-        classBaseMapper.updateFromVo(classBaseVo, loadClassBase);
+        classBaseMapper.updateFromVo(newClassBaseVo, loadClassBase);
 
-        return classBaseMapper.toVo(classBaseRepository.save(loadClassBase));
+        ClassBaseVo classBaseVo = classBaseMapper.toVo(classBaseRepository.save(loadClassBase));
+        classBaseVo.setVideos(classVideoService.bulkAdds(classBaseVo, newClassBaseVo.getVideos()));;
+
+
+        return classBaseVo;
 
     }
 }

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -36,11 +38,13 @@ public class ReqClassBaseVo extends CommonVo {
     /**
      * 미리보기영상여부
      */
-    private String prvYn = "Y";
+    private String prvYn = "N";
 
     /**
      * 사용여부
      */
     private String useYn= "Y";
 
+    @NotEmpty
+    List<ReqClassVideoVo> videos;
 }

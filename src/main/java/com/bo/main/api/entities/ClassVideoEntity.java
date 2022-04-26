@@ -13,16 +13,22 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "CLASS_VIDEO")
-public class ClassVideoEntity implements Serializable {
+public class ClassVideoEntity extends BaseTimeEntity  implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     /**
      * 강의 순번
      */
     @Id
-    @Column(name = "CLSS_SEQ", nullable = false)
+    @Column(name = "VD_SEQ", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long vdSeq;
+
+
+    /**
+     * 강의 순번
+     */
+    @Column(name = "CLSS_SEQ", nullable = false)
     private Long clssSeq;
 
     /**
@@ -48,30 +54,6 @@ public class ClassVideoEntity implements Serializable {
      */
     @Column(name = "PRV_YN")
     private String prvYn;
-
-    /**
-     * 등록일시
-     */
-    @Column(name = "CRT_DTM")
-    private Date crtDtm;
-
-    /**
-     * 등록자
-     */
-    @Column(name = "crtr")
-    private String crtr;
-
-    /**
-     * 수정일시
-     */
-    @Column(name = "UPD_DTM")
-    private Date updDtm;
-
-    /**
-     * 수정자
-     */
-    @Column(name = "updtr")
-    private String updtr;
 
     @Override
     public boolean equals(Object o) {

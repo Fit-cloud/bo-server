@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -73,4 +74,6 @@ public class ClassBaseVo implements Serializable {
      */
     private String updtr;
 
+
+    private List<ClassVideoVo> videos;
 }

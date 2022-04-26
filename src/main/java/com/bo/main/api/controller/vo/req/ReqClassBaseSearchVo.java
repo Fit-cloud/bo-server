@@ -1,16 +1,18 @@
-package com.bo.main.api.controller.vo.res;
+package com.bo.main.api.controller.vo.req;
 
 import com.bo.main.api.controller.vo.common.CommonVo;
-import com.bo.main.api.controller.vo.req.ReqClassVideoVo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-public class ResClassBaseVo extends CommonVo {
+public class ReqClassBaseSearchVo {
+
+    /**
+     * 비디오 순번
+     */
+    private Long vdSeq;
     /**
      * 강의 순번
      */
@@ -43,7 +45,5 @@ public class ResClassBaseVo extends CommonVo {
      * 사용여부
      */
     private String useYn;
-
-    List<ResClassVideoVo> videos;
 
 }

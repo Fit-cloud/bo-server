@@ -15,10 +15,14 @@ import org.mapstruct.*;
 import java.util.List;
 
 @Mapper(
+        uses = {
+                ClassVideoMapper.class
+        },
         componentModel = "spring"
 )
 public interface ClassBaseMapper extends GenericMapper<ClassBaseVo, ClassBaseEntity> {
 
+    @Mapping(target = "videos", ignore = true)
     @Override
     ClassBaseVo toVo(ClassBaseEntity classBaseEntity);
 
