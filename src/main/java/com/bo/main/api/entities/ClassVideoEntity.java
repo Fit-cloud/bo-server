@@ -1,12 +1,16 @@
 package com.bo.main.api.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "CLASS_VIDEO")
 public class ClassVideoEntity implements Serializable {
@@ -69,4 +73,16 @@ public class ClassVideoEntity implements Serializable {
     @Column(name = "updtr")
     private String updtr;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClassVideoEntity that = (ClassVideoEntity) o;
+        return clssSeq != null && Objects.equals(clssSeq, that.clssSeq);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

@@ -36,7 +36,7 @@
         UPDTR    varchar(255) null comment '수정자'
     );
 
-##  LECTURER
+##  LECTURER_CAREER
     -- auto-generated definition
     create table LECTURER_CAREER
     (
@@ -50,8 +50,24 @@
     UPD_DTM  datetime     null comment '수정일시',
     UPDTR    varchar(255) null comment '수정자'
     );
-    
 
 
+
+##  CLASS_BASE
+    -- auto-generated definition
+    create table CLASS_BASE
+    (
+    CLSS_SEQ  bigint auto_increment comment '강의 순번'
+    primary key,
+    CLSS_CD   varchar(50)   not null comment '강의코드',
+    CLSS_NM   varchar(100)  null comment '강의명',
+    CLSS_DESC varchar(2000) null comment '강의설명',
+    PRV_YN    char          null comment '미리보기영상여부',
+    USE_YN    char          null comment '사용여부',
+    CRT_DTM   datetime      null comment '등록일시',
+    CRTR      varchar(255)  null comment '등록자',
+    UPD_DTM   datetime      null comment '수정일시',
+    UPDTR     varchar(255)  null comment '수정자'
+    );
 
 

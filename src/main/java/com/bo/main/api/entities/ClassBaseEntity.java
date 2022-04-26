@@ -1,15 +1,22 @@
 package com.bo.main.api.entities;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "CLASS_BASE")
-public class ClassBaseEntity implements Serializable {
+public class ClassBaseEntity extends BaseTimeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,7 +32,7 @@ public class ClassBaseEntity implements Serializable {
      * 강의코드
      */
     @Column(name = "CLSS_CD", nullable = false)
-    private Long clssCd;
+    private String clssCd;
 
     /**
      * 강의명
@@ -51,28 +58,16 @@ public class ClassBaseEntity implements Serializable {
     @Column(name = "USE_YN")
     private String useYn;
 
-    /**
-     * 등록일시
-     */
-    @Column(name = "CRT_DTM")
-    private Date crtDtm;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        ClassBaseEntity that = (ClassBaseEntity) o;
+        return clssSeq != null && Objects.equals(clssSeq, that.clssSeq);
+    }
 
-    /**
-     * 등록자
-     */
-    @Column(name = "crtr")
-    private String crtr;
-
-    /**
-     * 수정일시
-     */
-    @Column(name = "UPD_DTM")
-    private Date updDtm;
-
-    /**
-     * 수정자
-     */
-    @Column(name = "updtr")
-    private String updtr;
-
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

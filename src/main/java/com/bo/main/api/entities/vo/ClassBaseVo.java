@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 @Data
-public class ClassBaseEntityVO implements Serializable {
+public class ClassBaseVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
@@ -23,7 +23,7 @@ public class ClassBaseEntityVO implements Serializable {
      * 강의코드
      */
     @NotNull(message = "clssCd can not null")
-    private Long clssCd;
+    private String clssCd;
 
 
     /**
