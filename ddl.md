@@ -70,4 +70,21 @@
     UPDTR     varchar(255)  null comment '수정자'
     );
 
+##  CLASS_VIDEO
+
+    -- auto-generated definition
+    create table CLASS_VIDEO
+    (
+    VD_SEQ   bigint auto_increment comment '비디오 순번'
+    primary key,
+    CLSS_SEQ bigint       not null comment '강의 순번',
+    VD_TTL   varchar(100) null comment '영상제목',
+    VD_URL   varchar(500) null comment '영상 URL',
+    DEL_YN   char         null comment '삭제여부',
+    PRV_YN   char         null comment '미리보기여부',
+    CRT_DTM  datetime     null comment '등록일시',
+    CRTR     varchar(255) null comment '등록자',
+    UPD_DTM  datetime     null comment '수정일시',
+    UPDTR    varchar(255) null comment '수정자'
+    );
 
