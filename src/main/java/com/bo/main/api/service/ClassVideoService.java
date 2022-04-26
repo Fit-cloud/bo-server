@@ -80,7 +80,12 @@ public class ClassVideoService {
 
         for (ClassVideoVo classVideoVo: classVideos) {
             classVideoVo.setClssSeq(classBaseVo.getClssSeq());
-            results.add(update(classVideoVo));
+
+            if (classVideoVo.getVdSeq() != null) {
+                results.add(update(classVideoVo));
+            } else {
+                results.add(add(classVideoVo));
+            }
         }
 
         return results;
