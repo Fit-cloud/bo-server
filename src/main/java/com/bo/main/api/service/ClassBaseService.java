@@ -48,13 +48,17 @@ public class ClassBaseService {
 //        return new PageImpl<>(adminMapper.toVos(adminEntityPage.getContent()), pageable, adminEntityPage.getTotalElements());
 //    }
 //
-    public ClassBaseVo update(ClassBaseVo classBaseVo) throws Exception {
+    public ClassBaseVo update(ClassBaseVo updateClassBaseVo) throws Exception {
 
-        Optional<ClassBaseEntity> opt = findClassBaseById(classBaseVo.getClssSeq());
+        Optional<ClassBaseEntity> opt = findClassBaseById(updateClassBaseVo.getClssSeq());
 
-        ClassBaseEntity loadClassBase = opt.orElseThrow(() -> new Exception(StringUtils.message("등록된 ClassBase 정보({})가 없습니다.", classBaseVo.getClssSeq() + "")));
-        classBaseMapper.updateFromVo(classBaseVo, loadClassBase);
-        return classBaseMapper.toVo(classBaseRepository.save(loadClassBase));
+        ClassBaseEntity loadClassBase = opt.orElseThrow(() -> new Exception(StringUtils.message("등록된 ClassBase 정보({})가 없습니다.", updateClassBaseVo.getClssSeq() + "")));
+        classBaseMapper.updateFromVo(updateClassBaseVo, loadClassBase);
+
+        ClassBaseVo classBaseVo = classBaseMapper.toVo(classBaseRepository.save(loadClassBase));
+        classBaseVo.setVideos(classVideoService.bulkUpdates(classBaseVo, updateClassBaseVo.getVideos()));;
+
+        return classBaseVo;
     }
 //
     public ClassBaseVo add(ClassBaseVo newClassBaseVo) throws Exception {

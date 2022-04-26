@@ -48,7 +48,7 @@ public class ClassVideoService {
 
         Optional<ClassVideoEntity> opt = findClassVideoById(classVideoVo.getVdSeq());
 
-        ClassVideoEntity loadClassVideo = opt.orElseThrow(() -> new Exception(StringUtils.message("등록된 Class Video 정보({})가 없습니다.", classVideoVo.getVdSeq() + "")));
+        ClassVideoEntity loadClassVideo = opt.orElseGet(ClassVideoEntity::new);
         classVideoMapper.updateFromVo(classVideoVo, loadClassVideo);
 
         return classVideoMapper.toVo(classVideoRepository.save(loadClassVideo));
