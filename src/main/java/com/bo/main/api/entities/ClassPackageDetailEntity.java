@@ -1,14 +1,12 @@
 package com.bo.main.api.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Getter
@@ -16,18 +14,18 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name = "LECTURER_CLASS_MAPPING")
-public class LecturerClassEntity extends BaseTimeEntity implements Serializable {
+@Table(name = "CLASS_PACKAGE_DETAIL")
+public class ClassPackageDetailEntity extends BaseTimeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 강사순번
+     * 패키지 순번
      */
     @Id
-    @Column(name = "LCTR_SEQ", nullable = false)
+    @Column(name = "PACK_SEQ", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long lctrSeq;
+    private Long packSeq;
 
     /**
      * 강의 순번
@@ -35,24 +33,27 @@ public class LecturerClassEntity extends BaseTimeEntity implements Serializable 
     @Column(name = "CLSS_SEQ", nullable = false)
     private Long clssSeq;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "LCTR_SEQ", insertable = false, updatable = false)
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PACK_SEQ", insertable = false, updatable = false)
     @JsonBackReference
     @ToString.Exclude
-    private LecturerClassEntity lecturerClassEntity;
+    private ClassPackageEntity classPackageEntity;
 
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CLSS_SEQ", insertable = false, updatable = false)
     @JsonBackReference
     @ToString.Exclude
     private ClassBaseEntity classBaseEntity;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        LecturerClassEntity that = (LecturerClassEntity) o;
-        return lctrSeq != null && Objects.equals(lctrSeq, that.lctrSeq);
+        ClassPackageDetailEntity that = (ClassPackageDetailEntity) o;
+        return packSeq != null && Objects.equals(packSeq, that.packSeq);
     }
 
     @Override

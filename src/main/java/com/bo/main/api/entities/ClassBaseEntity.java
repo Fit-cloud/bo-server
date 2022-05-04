@@ -61,7 +61,7 @@ public class ClassBaseEntity extends BaseTimeEntity implements Serializable {
     private String useYn;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CLSS_SEQ", insertable = false, updatable = false)
+    @JoinColumn(name = "CLSS_SEQ")
     @JsonBackReference
     @ToString.Exclude
     private List<ClassVideoEntity> classVideoEntityList;
