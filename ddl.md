@@ -88,3 +88,50 @@
     UPDTR    varchar(255) null comment '수정자'
     );
 
+##LECTURER_CLASS_MAPPING
+    -- auto-generated definition
+    create table LECTURER_CLASS_MAPPING
+    (
+    LCTR_SEQ bigint auto_increment comment '강사순번'
+    primary key,
+    CLSS_SEQ bigint       not null comment '강의 순번',
+    CRT_DTM  datetime     null comment '등록일시',
+    CRTR     varchar(255) null comment '등록자',
+    UPD_DTM  datetime     null comment '수정일시',
+    UPDTR    varchar(255) null comment '수정자'
+    );
+
+
+
+## CLASS_PACKAGE
+    -- auto-generated definition
+    create table CLASS_PACKAGE
+    (
+    PACK_SEQ  bigint auto_increment comment '패키지 순번'
+    primary key,
+    PACK_CD   varchar(50)  null comment '패키지 코드',
+    CTGR_ID   bigint       null comment '카테고리ID',
+    PACK_THNL varchar(500) null comment '패키지 썸네일',
+    PACK_NM   varchar(100) null comment '강의 패키지 명',
+    PRC       int          null comment '단가',
+    USE_YN    char         null comment '사용여부',
+    CRT_DTM   datetime     null comment '등록일시',
+    CRTR      varchar(255) null comment '등록자',
+    UPD_DTM   datetime     null comment '수정일시',
+    UPDTR     varchar(255) null comment '수정자'
+    );
+
+## CLASS_PACKAGE_DETAIL
+    -- auto-generated definition
+    create table CLASS_PACKAGE_DETAIL
+    (
+    PACK_SEQ bigint auto_increment comment '패키지 순번'
+    primary key,
+    CLSS_SEQ bigint       not null comment '강의 순번',
+    CRT_DTM  datetime     null comment '등록일시',
+    CRTR     varchar(255) null comment '등록자',
+    UPD_DTM  datetime     null comment '수정일시',
+    UPDTR    varchar(255) null comment '수정자'
+    );
+
+

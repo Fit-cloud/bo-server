@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/bo/admin/class/base")
+@RequestMapping("/bo/admin/classbase")
 @RequiredArgsConstructor
 public class BoClassController {
 

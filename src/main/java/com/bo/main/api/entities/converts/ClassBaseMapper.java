@@ -22,10 +22,11 @@ import java.util.List;
 )
 public interface ClassBaseMapper extends GenericMapper<ClassBaseVo, ClassBaseEntity> {
 
-    @Mapping(target = "videos", ignore = true)
+    @Mapping(target = "videos", source = "classVideoEntityList")
     @Override
     ClassBaseVo toVo(ClassBaseEntity classBaseEntity);
 
+    @Mapping(target = "classVideoEntityList", source = "videos")
     @Override
     ClassBaseEntity toEntity(ClassBaseVo classBaseVo);
 
@@ -40,6 +41,7 @@ public interface ClassBaseMapper extends GenericMapper<ClassBaseVo, ClassBaseEnt
 
     ResClassBaseVo toVo(ClassBaseVo classBaseVo);
 
+    @Mapping(target = "classVideoEntityList", source = "videos")
     void updateFromVo(ClassBaseVo dto, @MappingTarget ClassBaseEntity entity);
 
 }

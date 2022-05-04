@@ -16,7 +16,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "LECTURER_CAREER")
-public class LecturerCareerEntity implements Serializable {
+public class LecturerCareerEntity extends BaseTimeEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -45,30 +45,6 @@ public class LecturerCareerEntity implements Serializable {
      */
     @Column(name = "CARR_NO")
     private Integer carrNo;
-
-    /**
-     * 등록일시
-     */
-    @Column(name = "CRT_DTM")
-    private Date crtDtm;
-
-    /**
-     * 등록자
-     */
-    @Column(name = "crtr")
-    private String crtr;
-
-    /**
-     * 수정일시
-     */
-    @Column(name = "UPD_DTM")
-    private Date updDtm;
-
-    /**
-     * 수정자
-     */
-    @Column(name = "updtr")
-    private String updtr;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

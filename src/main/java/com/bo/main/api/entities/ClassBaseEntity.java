@@ -1,5 +1,6 @@
 package com.bo.main.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -57,6 +59,12 @@ public class ClassBaseEntity extends BaseTimeEntity implements Serializable {
      */
     @Column(name = "USE_YN")
     private String useYn;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CLSS_SEQ", insertable = false, updatable = false)
+    @JsonBackReference
+    @ToString.Exclude
+    private List<ClassVideoEntity> classVideoEntityList;
 
     @Override
     public boolean equals(Object o) {

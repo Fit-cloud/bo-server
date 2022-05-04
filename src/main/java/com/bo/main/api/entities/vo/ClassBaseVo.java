@@ -1,9 +1,11 @@
 package com.bo.main.api.entities.vo;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -54,20 +56,20 @@ public class ClassBaseVo implements Serializable {
     /**
      * 등록일시
      */
-    private Date crtDtm;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime crtDtm;
 
     /**
      * 등록자
      */
     private String crtr;
 
-
     /**
      * 수정일시
      */
-    private Date updDtm;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime updDtm;
 
     /**
      * 수정자

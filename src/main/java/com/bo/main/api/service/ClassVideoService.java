@@ -37,13 +37,6 @@ public class ClassVideoService {
         return classVideoMapper.toVo(opt.orElseThrow(() -> new Exception(StringUtils.message("등록된 Class Video 정보({})가 없습니다.", vdSeq+""))));
     }
 
-    //
-//    public Page<AdminVo> search(ReqAdminSearchVo searchVo, Pageable pageable) throws Exception {
-//        Page<AdminEntity> adminEntityPage = qAdminRepository.findList(searchVo, pageable);
-//        return new PageImpl<>(adminMapper.toVos(adminEntityPage.getContent()), pageable, adminEntityPage.getTotalElements());
-//    }
-//
-
     public ClassVideoVo update(ClassVideoVo classVideoVo) throws Exception {
 
         Optional<ClassVideoEntity> opt = findClassVideoById(classVideoVo.getVdSeq());

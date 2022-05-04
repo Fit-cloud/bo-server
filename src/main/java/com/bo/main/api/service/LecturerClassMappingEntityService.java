@@ -1,14 +1,6 @@
 package com.bo.main.api.service;
 
-import com.bo.main.api.entities.LecturerClassMappingEntity;
-import com.bo.main.api.repositories.LecturerClassMappingEntityRepository;
-import com.bo.main.api.entities.vo.LecturerClassMappingEntityVO;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 public class LecturerClassMappingEntityService {

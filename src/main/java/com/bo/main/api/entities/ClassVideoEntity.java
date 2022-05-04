@@ -1,5 +1,6 @@
 package com.bo.main.api.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,7 +24,6 @@ public class ClassVideoEntity extends BaseTimeEntity  implements Serializable {
     @Column(name = "VD_SEQ", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long vdSeq;
-
 
     /**
      * 강의 순번
@@ -54,6 +54,12 @@ public class ClassVideoEntity extends BaseTimeEntity  implements Serializable {
      */
     @Column(name = "PRV_YN")
     private String prvYn;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CLSS_SEQ", insertable = false, updatable = false)
+    @JsonBackReference
+    @ToString.Exclude
+    private ClassBaseEntity classBaseEntity;
 
     @Override
     public boolean equals(Object o) {
