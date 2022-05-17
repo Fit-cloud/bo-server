@@ -3,18 +3,14 @@ package com.bo.main.api.entities.converts;
 import com.bo.main.api.controller.vo.res.ResLecturerCareerVo;
 import com.bo.main.api.entities.LecturerCareerEntity;
 import com.bo.main.api.entities.vo.LecturerCareerVo;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-05-04T10:52:50+0900",
+    date = "2022-05-17T17:31:06+0900",
     comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.4.jar, environment: Java 11.0.11 (AdoptOpenJDK)"
 )
 @Component
@@ -60,13 +56,9 @@ public class LecturerCareerMapperImpl implements LecturerCareerMapper {
         lecturerCareerVo.setLctrSeq( lecturerCareerEntity.getLctrSeq() );
         lecturerCareerVo.setCarrNm( lecturerCareerEntity.getCarrNm() );
         lecturerCareerVo.setCarrNo( lecturerCareerEntity.getCarrNo() );
-        if ( lecturerCareerEntity.getCrtDtm() != null ) {
-            lecturerCareerVo.setCrtDtm( LocalDateTime.ofInstant( lecturerCareerEntity.getCrtDtm().toInstant(), ZoneId.of( "UTC" ) ) );
-        }
+        lecturerCareerVo.setCrtDtm( lecturerCareerEntity.getCrtDtm() );
         lecturerCareerVo.setCrtr( lecturerCareerEntity.getCrtr() );
-        if ( lecturerCareerEntity.getUpdDtm() != null ) {
-            lecturerCareerVo.setUpdDtm( LocalDateTime.ofInstant( lecturerCareerEntity.getUpdDtm().toInstant(), ZoneId.of( "UTC" ) ) );
-        }
+        lecturerCareerVo.setUpdDtm( lecturerCareerEntity.getUpdDtm() );
         lecturerCareerVo.setUpdtr( lecturerCareerEntity.getUpdtr() );
 
         return lecturerCareerVo;
@@ -84,14 +76,6 @@ public class LecturerCareerMapperImpl implements LecturerCareerMapper {
         lecturerCareerEntity.setLctrSeq( lecturerCareerVo.getLctrSeq() );
         lecturerCareerEntity.setCarrNm( lecturerCareerVo.getCarrNm() );
         lecturerCareerEntity.setCarrNo( lecturerCareerVo.getCarrNo() );
-        if ( lecturerCareerVo.getCrtDtm() != null ) {
-            lecturerCareerEntity.setCrtDtm( Date.from( lecturerCareerVo.getCrtDtm().toInstant( ZoneOffset.UTC ) ) );
-        }
-        lecturerCareerEntity.setCrtr( lecturerCareerVo.getCrtr() );
-        if ( lecturerCareerVo.getUpdDtm() != null ) {
-            lecturerCareerEntity.setUpdDtm( Date.from( lecturerCareerVo.getUpdDtm().toInstant( ZoneOffset.UTC ) ) );
-        }
-        lecturerCareerEntity.setUpdtr( lecturerCareerVo.getUpdtr() );
 
         return lecturerCareerEntity;
     }

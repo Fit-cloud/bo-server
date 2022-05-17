@@ -22,23 +22,29 @@ public class QLecturerCareerEntity extends EntityPathBase<LecturerCareerEntity> 
 
     public static final QLecturerCareerEntity lecturerCareerEntity = new QLecturerCareerEntity("lecturerCareerEntity");
 
+    public final QBaseTimeEntity _super = new QBaseTimeEntity(this);
+
     public final StringPath carrNm = createString("carrNm");
 
     public final NumberPath<Integer> carrNo = createNumber("carrNo", Integer.class);
 
     public final NumberPath<Long> carrSeq = createNumber("carrSeq", Long.class);
 
-    public final DateTimePath<java.util.Date> crtDtm = createDateTime("crtDtm", java.util.Date.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> crtDtm = _super.crtDtm;
 
-    public final StringPath crtr = createString("crtr");
+    //inherited
+    public final StringPath crtr = _super.crtr;
 
     public final NumberPath<Long> lctrSeq = createNumber("lctrSeq", Long.class);
 
     public final QLecturerEntity lecturerEntity;
 
-    public final DateTimePath<java.util.Date> updDtm = createDateTime("updDtm", java.util.Date.class);
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updDtm = _super.updDtm;
 
-    public final StringPath updtr = createString("updtr");
+    //inherited
+    public final StringPath updtr = _super.updtr;
 
     public QLecturerCareerEntity(String variable) {
         this(LecturerCareerEntity.class, forVariable(variable), INITS);
